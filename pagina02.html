@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Segunda p&aacute;gina</title>
+        <link rel="stylesheet" href="./styles/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Llegu&eacute; hasta aqu&iacute;</h1>
+            <nav style="background-color: yellowgreen;">
+                <ul>
+                    <li style="border: 10px;border-color: black;"><a href="#">Inicio</a></li>
+                    <li><a href="holamundo.html">Regresar</a></li>
+                </ul>
+            </nav>
+        </header>
+        <aside>
+            <ol>
+                <li>Opcion 1</li>
+                <li>Opcion 2</li>
+                <li>Opcion 3</li>
+            </ol>
+        </aside>
+        <main>
+            <h3>Mi primer formulario</h3>
+            <form method="post">
+                <table border="1" width="40%">
+                    <tr>
+                        <td><label>Nombre:</label></td><td><input type="text" name="nombre" value="" class="boxes" placeholder="Nombre de la persona"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Apellido:</label></td><td><input type="text" name="apeliido" value="" placeholder="Apellido de la persona"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Fecha nacimiento:</label></td><td><input type="date" name="fechaNacimiento" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td><td><input type="email" name="email" value="" placeholder="user@dominio.com"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password:</label></td><td><input type="password" name="password" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label>Provincia:</label></td><td>
+                            <select name="provincia">
+                                <option value="-1" selected>Seleccionar provincia...</option>
+                                <option value="1">San Jos&eacute;</option>
+                                <option value="2">Cartago</option>
+                                <option value="3">Heredia</option>
+                                <option value="4">Alajuela</option>
+                                <option value="5">Guanacaste</option>
+                                <option value="6">Puntarenas</option>
+                                <option value="7">Lim&oacute;n</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><label>Color:</label></td><td><input type="color" name="color" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label>Cantidad Hijos:</label></td><td><input type="number" name="cntHijos" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label>Rango</label></td><td><input type="range" name="range" min="0" max="100" value="50" ></td>
+                    </tr>
+                    <tr>
+                        <td><label>Notas:</label></td><td><textarea name="notas" cols="100" rows="5"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="enviar" value="Enviar" ></td>
+                    </tr>
+                </table>
+            </form>
+        </main>
+        <footer>
+            <p align="center"> Desarrollado por: Jose Danilo</p>
+        </footer>
+    </body>
+</html>
