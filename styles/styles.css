@@ -1,8 +1,46 @@
+*{
+    font-family: Arial; /*Cambia el tipo de letra*/
+    color: #003366;
+    box-sizing: border-box;
+}
+
 h1{
     color: orangered;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .boxes{
-    border-color: blue;
+    border-color: #1e90ff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #f0f8ff;
+}
+
+#tabla{
+    border: 5px solid coral;
+    border-collapse: collapse;
+    width: 100px;
+    text-align: center;
+}
+
+#tabla td{
+    border: 2px solid aquamarine;
+    text-align: center;
+}
+
+input[type="date"]{
+    width: 100%;
+    padding: 8px;
+    border: 3px solid #ccc;
+    border-radius: 4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #1a237e;
+    font-size: 14px;
 }
