@@ -44,3 +44,7 @@ label {
     color: #1a237e;
     font-size: 14px;
 }
+
+img ~ h3 {
+    color: red;
+}
