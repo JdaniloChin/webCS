@@ -1,0 +1,33 @@
+body {
+    font-family: Arial;
+    margin: 3px;
+    padding: 5px;
+    background-color: #f4f4f4;
+}
+
+header{
+    background-color: #007acc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #007acc
+}
+
+pre {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    text-align: left;
+
+}

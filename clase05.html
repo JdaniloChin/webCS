@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis primeros pasos en JavaScript</title>
+    <link rel="stylesheet" href="./styles/style2.css">
+</head>
+<body>
+    <header>
+        <h1>Unidad 3: Programación Frontend con JS</h1>
+        <p>Curso básico de ambiente web</p>
+    </header>
+    <main>
+        <section id="introduccion">
+            <h2>Introducción a JavaScript</h2>
+            <p>JavaScript es un lenguaje de programación que permite crear páginas web interactivas y dinámicas.</p>    
+        </section>
+        <section id="variables">
+            <h2>Variables y Tipos de Datos</h2>
+            <p>En JavaScript, puedes declarar variables usando <code>let</code>, <code>const</code> o <code>var</code>.</p>
+            <pre><code>let nombre = "Juan";
+             const edad = 30;
+             var ciudad = "San José";</code></pre>
+             <button onclick="mostrarVariables()">Mostrar en consola</button>
+        </section>
+        <section id="condicionales">
+            <h2>Condicionales</h2>
+            <p>Los condicionales permiten ejecutar código basado en condiciones.</p>
+            <pre><code>if (edad >= 18) {
+             console.log("Eres mayor de edad");
+             } else {
+                 console.log("Eres menor de edad");
+             }</code></pre>    
+             <button onclick="evaluarEdad()">Evaluar Edad</button>   
+        </section>
+        <section id="eventos">
+            <h2>Eventos</h2>
+            <p>Los eventos permiten interactuar con el usuario. Por ejemplo, puedes capturar un clic en un botón.</p>
+            <button id="miBoton">Haz clic aquí</button>
+        </section>
+    </main>
+    <script src="./javascript/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
