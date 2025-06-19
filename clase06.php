@@ -70,6 +70,21 @@
             break;  
     }
     echo "</section>";
+    $contador=0;
+    echo "<h2>Notas</h2>";
+    echo "<section>";
+
+    foreach($arr_notas as $nota) {
+        $contador ++;
+        if($nota >= 70){
+            echo "<p>Nota$contador aprobada: $nota</p>";
+        } else {
+            echo "<p>Nota$contador reprobada: $nota</p>";
+        }
+    }
+
+    echo "</section>";
+
     ?>
 </body>
 </html>
