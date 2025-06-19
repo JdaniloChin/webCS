@@ -53,6 +53,23 @@
         echo "<p>Lo siento, no has aprobado.</p>";
     }
     echo "</section>";
+
+    echo "<section>";
+    switch($promedio){
+        case $promedio >= 90: 
+            echo "<p>Excelente trabajo, $nombre. Tu promedio es A.</p>";
+            break;
+        case $promedio >= 80:
+            echo "<p>Buen trabajo, $nombre. Tu promedio es B.</p>"; 
+            break;
+        case $promedio >= 70:
+            echo "<p>Buen esfuerzo, $nombre. Tu promedio es C.</p>";    
+            break;
+        default:
+            echo "<p>Necesitas mejorar, $nombre. Tu promedio es D.</p>";
+            break;  
+    }
+    echo "</section>";
     ?>
 </body>
 </html>
