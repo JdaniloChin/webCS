@@ -84,7 +84,30 @@
     }
 
     echo "</section>";
+    echo "<h2>Operadores logicos</h2>";
+    echo "<section>";
+    if($nota1 >= 70 && $nota2 >= 70 && $nota3 >= 70 && $nota4 >= 70){
+        echo "<p>¡Felicidades! Todas tus notas son aprobadas.</p>";
+    } else {
+        echo "<p>Algunas de tus notas son reprobadas.</p>";
+    }
+    echo "</section>";
 
+    echo "<section>";
+    if($nota1 < 70 || $nota2 < 70 || $nota3 < 70 || $nota4 < 70){
+        echo "<p>Al menos una de tus notas está reprobada (menor a 70).</p>";
+    } else {
+        echo "<p>¡Felicidades! Todas tus notas son aprobadas.</p>";
+    }
+    echo "</section>";
+
+    echo "<section>";
+    if(!$aprobado){
+        echo "<p>Lo siento, debe repetir el curso.</p>";
+    } else {
+        echo "<p>¡Felicidades! Te veo en el siguiente curso</p>";
+    }
+    echo "</section>";
     ?>
 </body>
 </html>
