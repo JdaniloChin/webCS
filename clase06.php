@@ -18,7 +18,14 @@
     // Imprimir 
     echo "<h1>Hola, $nombre</h1>";
     print("Tu edad es: $edad años<br>");
-
+    echo "<p>";
+    // Condicionales
+    if($edad >= 18){
+        echo "Eres mayor de edad.";
+    } else {
+        echo "Eres menor de edad."; 
+    }
+    echo "</p>";
     ?>
 </body>
 </html>
