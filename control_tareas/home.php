@@ -23,6 +23,9 @@ session_start();
           <li class="nav-item"><a class="nav-link text-white" href="#">Reportes</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="#">Configuración</a></li>
         </ul>
+        <form action="include/logout.php" method="post" class="mt-4">
+          <button type="submit" class="btn btn-danger w-100">Cerrar sesión</button>
+        </form>
       </aside>
       <main class="col-md-9 p-4">
     <?php
