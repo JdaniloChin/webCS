@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['nombre'])) {
     header("Location: ../index.php");
     exit();
+}else {
+  require_once("include/conexion.php");
 }
 ?>
 <!DOCTYPE html>
