@@ -15,7 +15,10 @@ if (!isset($_SESSION['nombre'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
-<div class="container py-5">
+<div class="container-fluid">
+<div class="row min-vh-100">
+  <?php include 'include/menu.php'; ?>
+  <main>
     <h2 class="mb-4">CRUD de Usuarios</h2>
     <button class="btn btn-success mb-3" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#usuarioModal">Agregar Usuario</button>
     <table class="table table-bordered" id="tablaUsuarios">
@@ -31,6 +34,8 @@ if (!isset($_SESSION['nombre'])) {
             <!-- Aquí se agregan los usuarios dinámicamente -->
         </tbody>
     </table>
+</main>
+</div>
 </div>
 
 <!-- Modal -->
