@@ -65,9 +65,6 @@ if (!isset($_SESSION['nombre'])) {
     </form>
   </div>
 </div>
-
-<script>
-
-</script>
+<script src="./javascript/usuario.js"></script>
 </body>
 </html>
