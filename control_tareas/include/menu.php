@@ -1,9 +1,4 @@
 <?php
-session_start();
-if (!isset($_SESSION['nombre'])) {
-    header("Location: ../index.php");
-    exit();
-}
 ?>
 <aside class="col-md-3 bg-dark text-white p-4">
         <h4 class="mb-4">Menú</h4>
