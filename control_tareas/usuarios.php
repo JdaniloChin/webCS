@@ -61,6 +61,14 @@ if (!isset($_SESSION['nombre'])) {
                 <label for="email" class="form-label">Correo electrónico:</label>
                 <input type="email" class="form-control" id="email" required>
             </div>
+            <div class="mb-3">
+                    <label class="form-label" for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3">
+                    <label class="form-label" for="confirm">Confirmar contraseña:</label>
+                    <input type="password" class="form-control" id="confirm" name="confirm" required>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
