@@ -19,9 +19,11 @@ if (!isset($_SESSION['nombre'])) {
 <div class="row min-vh-100">
   <?php include 'include/menu.php'; ?>
   <main>
-    <h2 class="mb-4">CRUD de Usuarios</h2>
-    <button class="btn btn-success mb-3" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#usuarioModal">Agregar Usuario</button>
-    <table class="table table-bordered" id="tablaUsuarios">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3>Usuarios del sistema</h3>
+          <button class="btn btn-success mb-3" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#usuarioModal">Agregar Usuario</button>
+    </div>
+    <table class="table table-bordered table-striped" id="tablaUsuarios">
         <thead class="table-dark">
             <tr>
                 <th>Nombre</th>
