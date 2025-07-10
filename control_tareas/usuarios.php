@@ -18,7 +18,7 @@ if (!isset($_SESSION['nombre'])) {
 <div class="container-fluid">
 <div class="row min-vh-100">
   <?php include 'include/menu.php'; ?>
-  <main>
+  <main class="col-md-9 p-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
           <h3>Usuarios del sistema</h3>
           <button class="btn btn-success mb-3" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#usuarioModal">Agregar Usuario</button>
