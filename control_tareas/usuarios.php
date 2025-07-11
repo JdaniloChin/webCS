@@ -54,7 +54,7 @@ if (!isset($_SESSION['nombre'])) {
                 <td><?= htmlspecialchars($usuario['Email'])?></td>
                 <td>
                   <a href="?editar=<?= $usuario['Id_usuario'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                  <a href="?eliminar=<?= $usuario['Id_usuario'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este usuario')">Eliminar</a>
+                  <a href="?eliminar=<?= $usuario['Id_usuario'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este usuario?')">Eliminar</a>
                 </td>
              </tr>
              <?php endforeach; ?>
