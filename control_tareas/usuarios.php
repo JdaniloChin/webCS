@@ -31,13 +31,9 @@ if (!isset($_SESSION['nombre'])) {
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
       $mensaje = "Email invalido";
       $tipo_mensaje = "danger";
-      header("Location: " .$_SERVER['PHP_SELF']);
-      exit();
     }elseif($password !== $confirm){
       $mensaje = "Contraseñas no coinciden";
       $tipo_mensaje = "danger";
-      header("Location: " .$_SERVER['PHP_SELF']);
-      exit();
     }else {
       
       $pass_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -88,6 +84,18 @@ if (!isset($_SESSION['nombre'])) {
     }
     $_SESSION['mensaje'] = $mensaje;
     $_SESSION['tipo_mensaje'] = $tipo_mensaje;
+    $mysqli->close();
+    header("Location: " .$_SERVER['PHP_SELF']);
+    exit();
+  }
+
+  if(isset($_GET['eliminar'])){
+    $id = $_GET['eliminar'];
+    $sql = "DELETE FROM usuarios WHERE Id_usuario = ?";
+    $stmt= $mysqli->prepare($sql);
+    $stmt->bind_param("i",$id);
+    $stmt->execute();
+    $stmt->close();
     $mysqli->close();
     header("Location: " .$_SERVER['PHP_SELF']);
     exit();
