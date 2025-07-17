@@ -1,63 +1,49 @@
-let usuarios = [];
-let editIndex = null;
+document.addEventListener('DOMContentLoaded', function () {
+    const btnsEditar = document.querySelectorAll('.btnEditar');
+    const modal = new bootstrap.Modal(document.getElementById('usuarioModal'));
+    const modalTitle = document.getElementById('usuarioModalLabel');
+    const form = document.getElementById('formUsuario');
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirm');
 
-// Función para renderizar la tabla
-function renderTabla() {
-    const tbody = document.querySelector("#tablaUsuarios tbody");
-    tbody.innerHTML = "";
-    usuarios.forEach((usuario, idx) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td>${usuario.nombre}</td>
-            <td>${usuario.fecha_nam}</td>
-            <td>${usuario.email}</td>
-            <td>
-                <button class="btn btn-warning btn-sm me-2" onclick="editarUsuario(${idx})">Editar</button>
-            </td>
-        `;
-        tbody.appendChild(tr);
+    btnsEditar.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const id =  this.getAttribute('data-id');
+            const nombre = this.getAttribute('data-nombre'); 
+            const fecha = this.getAttribute('data-fecha'); 
+            const email = this.getAttribute('data-email'); 
+
+            //cambiar el titulo del modal
+            modalTitle.textContent = 'Editar Usuario';
+
+            //Precargar los datos del usuario en el formulario
+            document.getElementById('usuarioIndex').value = id;
+            document.getElementById('nombre').value = nombre;
+            document.getElementById('fecha_nam').value = fecha;
+            document.getElementById('email').value = email;
+
+            //Contraseña queda en blanco por seguridad
+            document.getElementById('password').value = '';
+            document.getElementById('confirm').value = '';
+
+            //Quitar required para edicion
+            passwordInput.removeAttribute('required');
+            confirmInput.removeAttribute('required');
+
+            //Mostrar el modal
+            modal.show();
+        })
     });
-}
 
-// Al hacer click en "Agregar Usuario"
-document.getElementById("btnAgregar").addEventListener("click", function() {
-    document.getElementById("usuarioModalLabel").textContent = "Agregar Usuario";
-    document.getElementById("formUsuario").reset();
-    document.getElementById("usuarioIndex").value = "";
-    editIndex = null;
+    //Limpiar formulario del modal al cerrarlo, para el uso de agregar
+    document.getElementById('usuarioModal').addEventListener('hidden.bs.modal', () => {
+        form.reset();
+        document.getElementById('usuarioIndex').value = '';
+        modalTitle.textContent = 'Agregar Usuario';
+
+        //Restaurar required para agregar usuario
+        passwordInput.setAttribute('required', '');
+        confirmInput.setAttribute('required', '');
+    });
+
 });
-
-// Al enviar el formulario del modal
-document.getElementById("formUsuario").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const nombre = document.getElementById("nombre").value;
-    const fecha_nam = document.getElementById("fecha_nam").value;
-    const email = document.getElementById("email").value;
-
-    if(editIndex === null) {
-        // Agregar nuevo usuario
-        usuarios.push({nombre, fecha_nam, email});
-    } else {
-        // Editar usuario existente
-        usuarios[editIndex] = {nombre, fecha_nam, email};
-    }
-    renderTabla();
-    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('usuarioModal'));
-    modal.hide();
-});
-
-// Función para editar usuario
-window.editarUsuario = function(idx) {
-    const usuario = usuarios[idx];
-    document.getElementById("usuarioModalLabel").textContent = "Editar Usuario";
-    document.getElementById("nombre").value = usuario.nombre;
-    document.getElementById("fecha_nam").value = usuario.fecha_nam;
-    document.getElementById("email").value = usuario.email;
-    document.getElementById("usuarioIndex").value = idx;
-    editIndex = idx;
-    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('usuarioModal'));
-    modal.show();
-};
-
-// Inicializar tabla vacía
-renderTabla();
