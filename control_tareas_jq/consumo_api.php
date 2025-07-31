@@ -55,20 +55,34 @@ if (!isset($_SESSION['nombre'])) {
 <script>
 $(document).ready(function() {
     $('#btnConsumir').on('click', function() {
-        // Ejemplo de consumo de API - JSONPlaceholder
-        $.get('https://jsonplaceholder.typicode.com/posts/1')
-            .done(function(data) {
+        const vPokemon = prompt("Ingrese nombre o id del pokemon: ","pikachu");
+
+        if(!vPokemon){
+            $('#resultados').html('<p class="text-danger"><strong>Debe ingresar nombre o id del pokemon</strong></p>');
+        }
+
+        const url = `https://pokeapi.co/api/v2/pokemon/${vPokemon.toLowerCase()}`;
+
+        $.get(url)
+            .done(function(data){
+                const tipos = data.types.map(t => t.type.name).join(', ');
+
                 const html = `
-                    <h6>Datos obtenidos:</h6>
-                    <p><strong>ID:</strong> ${data.id}</p>
-                    <p><strong>Título:</strong> ${data.title}</p>
-                    <p><strong>Contenido:</strong> ${data.body}</p>
+                <div class="text-center">
+                    <h5 class="text-success text-capitalize">${data.name}</h5>
+                    <img src="${data.sprites.front_default}" alt="${data.name}" class="img-fluid mb-3" width="150">
+                </div>
+                <p><strong>ID:</strong> ${data.id}</p>
+                <p><strong>Tipo(s):</strong> ${tipos}</p>
                 `;
+
                 $('#resultados').html(html);
             })
             .fail(function() {
-                $('#resultados').html('<p class="text-danger">Error al consumir la API</p>');
+                $('#resultados').html('<p class="text-danger"><strong>Pokémon no encontrado</strong></p>');
             });
+
+        
     });
 });
 </script>

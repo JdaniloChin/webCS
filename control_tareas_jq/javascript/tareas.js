@@ -39,7 +39,12 @@ $(document).ready(function() {
     });
 
     // Evento para editar tarea (delegado)
-    $(document).on('click', '.task-card', function() {
+    $(document).on('click', '.task-card', function(e) {
+        // No abrir modal si se hizo click en el dropdown o sus elementos
+        if ($(e.target).closest('.dropdown').length > 0) {
+            return;
+        }
+        
         const id = $(this).data('id');
         const titulo = $(this).data('titulo');
         const descripcion = $(this).data('descripcion');
@@ -54,6 +59,11 @@ $(document).ready(function() {
         $('#tareaModalLabel').text('Editar Tarea');
         
         $('#tareaModal').modal('show');
+    });
+
+    // Prevenir que el dropdown abra el modal
+    $(document).on('click', '.dropdown, .dropdown *', function(e) {
+        e.stopPropagation();
     });
 
     // Función para cargar todas las tareas
@@ -109,7 +119,7 @@ $(document).ready(function() {
                 <div class="task-meta">
                     <span>👤 ${usuarioAsignado}</span>
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" onclick="event.stopPropagation();">
                             Cambiar estado
                         </button>
                         <ul class="dropdown-menu">
