@@ -66,17 +66,66 @@ $(document).ready(function() {
         $.get(url)
             .done(function(data){
                 const tipos = data.types.map(t => t.type.name).join(', ');
+                const habilidades = data.abilities;
+                const tablaHabilidades = [];
+                let completadas = 0;
 
-                const html = `
+                //Mostrar informacion pokemon mientras carga habilidades
+                $('#resultados').html(`
                 <div class="text-center">
                     <h5 class="text-success text-capitalize">${data.name}</h5>
                     <img src="${data.sprites.front_default}" alt="${data.name}" class="img-fluid mb-3" width="150">
                 </div>
                 <p><strong>ID:</strong> ${data.id}</p>
                 <p><strong>Tipo(s):</strong> ${tipos}</p>
-                `;
+                <p id="mensaje">Cargando habilidades...</p>
+                `);
 
-                $('#resultados').html(html);
+                habilidades.forEach((hab, index) =>{
+                    $.get(hab.ability.url)
+                    .done(function(detalle) {
+                        const efecto = detalle.effect_entries.find(e => e.language.name === "es")?.effect ||
+                                       detalle.effect_entries.find(e => e.language.name === "en")?.effect || 
+                                       "Sin descripcion disponible";
+                        
+                        tablaHabilidades.push(`
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td class="text-capitalize">${hab.ability.name}</td>
+                            <td>${efecto}</td>
+                        </tr>`);
+                    })
+                    .fail(function() {
+                        tablaHabilidades.push(`
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td class="text-capitalize">${hab.ability.name}</td>
+                            <td class="text-danger">Error al obtener efecto</td>
+                        </tr>`);
+                    })
+                    .always(function () {
+                        completadas++;
+
+                        if (completadas === habilidades.length) {
+                            const tabla = `
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Efecto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${tablaHabilidades.join("")}
+                                </tbody>
+                            </table>`;
+
+                            $('#resultados').append(tabla);
+                            $('#mensaje').html("");
+                        }
+                    });
+                });
             })
             .fail(function() {
                 $('#resultados').html('<p class="text-danger"><strong>Pokémon no encontrado</strong></p>');
